@@ -16,7 +16,6 @@ class ServerConfig {
     constructor() {
         //set options the server
         this.app.set('PORT', config_1.default.PORT || 8080);
-        ;
         //use middlewares
         this.app.use(express_1.default.json());
         this.app.use((0, morgan_1.default)('dev'));
