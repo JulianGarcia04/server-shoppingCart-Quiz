@@ -28,6 +28,10 @@ class ServerConfig {
     this.app.use(errorHundle.errorHandler);
     this.app.use(errorHundle.boomErrorHandler);
     this.app.use(errorHundle.formatError);
+
+    this.app.get('/product', (req, res)=>{
+      res.send('hola mundo');
+    })
   }
 }
 

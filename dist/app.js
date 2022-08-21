@@ -27,6 +27,9 @@ class ServerConfig {
         this.app.use(error_hundle_1.default.errorHandler);
         this.app.use(error_hundle_1.default.boomErrorHandler);
         this.app.use(error_hundle_1.default.formatError);
+        this.app.get('/product', (req, res) => {
+            res.send('hola mundo');
+        });
     }
 }
 exports.default = ServerConfig;
