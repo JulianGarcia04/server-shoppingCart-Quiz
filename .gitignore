@@ -225,4 +225,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#github
+.github
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,node,linux,macos,vue
