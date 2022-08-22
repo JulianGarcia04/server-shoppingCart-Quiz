@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
+const helmet_1 = __importDefault(require("helmet"));
 const routes_admin_1 = __importDefault(require("./routes/routes.admin"));
 const error_hundle_1 = __importDefault(require("./middlewares/error.hundle"));
 const config_1 = __importDefault(require("./config"));
@@ -19,7 +20,11 @@ class ServerConfig {
         //use middlewares
         this.app.use(express_1.default.json());
         this.app.use((0, morgan_1.default)('dev'));
-        this.app.use((0, cors_1.default)());
+        this.app.use((0, cors_1.default)({
+            origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:8080'],
+            credentials: true
+        }));
+        this.app.use((0, helmet_1.default)());
         this.app.use('/', express_1.default.static(path_1.default.join(__dirname, './public')));
         //routes
         (0, routes_admin_1.default)(this.app);
@@ -27,9 +32,6 @@ class ServerConfig {
         this.app.use(error_hundle_1.default.errorHandler);
         this.app.use(error_hundle_1.default.boomErrorHandler);
         this.app.use(error_hundle_1.default.formatError);
-        this.app.get('/product', (req, res) => {
-            res.send('hola mundo');
-        });
     }
 }
 exports.default = ServerConfig;
