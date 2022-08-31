@@ -29,6 +29,10 @@ class Product {
         type: Number,
         required: true
       },
+      presentacion:{
+        type: String,
+        required: true
+      },
       cantidad:{
         type: Number,
         required: true
